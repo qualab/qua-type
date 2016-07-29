@@ -10,10 +10,16 @@ namespace qua
         {
         public:
             object();
-            virtual ~object();
+            ~object();
+
+            object(const object& another);
+            object(object&& temporary);
 
             template <typename value_type>
-            explicit object(value_type value);
+            object(value_type value);
+
+            template <typename value_type>
+            operator value_type () const;
 
             template <typename value_type>
             void set(value_type value);
@@ -21,15 +27,37 @@ namespace qua
             template <typename value_type>
             value_type get() const;
 
+            template <typename value_type>
+            bool is() const;
+
+            class data;
+
         protected:
             static const size_t data_size = 16;
 
         private:
-            class data;
-
             data* m_data;
             char m_buffer[data_size];
         };
+
+        class QUA_TYPE_PUBLIC object::data
+        {
+        public:
+            virtual ~data() = 0;
+        };
+
+        template <typename value_type>
+        object::object(value_type value)
+            : m_data()
+        {
+            set(value);
+        }
+
+        template <typename value_type>
+        object::operator value_type () const
+        {
+            return get<value_type>();
+        }
     }
 }
 
