@@ -1,13 +1,13 @@
 ﻿#pragma once
 
-#include <qua/type/export>
+#include <qua/type/object>
 
 namespace qua
 {
     namespace type
     {
         template <typename value_type>
-        class QUA_TYPE_PUBLIC scalar
+        class QUA_TYPE_PUBLIC scalar : public object
         {
         public:
             scalar(value_type value);

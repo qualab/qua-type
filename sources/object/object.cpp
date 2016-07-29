@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <qua/type/scalar>
+#include <new>
 
 namespace qua
 {
@@ -122,25 +123,84 @@ namespace qua
         void object::set(bool value)
         {
             clear();
-            _data = new(_buffer) scalar<bool>::data(value);
+            _data = new(buffer()) scalar<bool>::data(value);
         }
 
         template <>
         void object::set(std::int8_t value)
-            : _data(new(_buffer) scalar<std::int8_t>::data(value))
         {
+            clear();
+            _data = new(_buffer) scalar<std::int8_t>::data(value);
         }
 
-        template <> QUA_TYPE_PUBLIC void object::set(std::int16_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::int32_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::int64_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::uint8_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::uint16_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::uint32_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::uint64_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(float value);
-        template <> QUA_TYPE_PUBLIC void object::set(double value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::nullptr_t);
+        template <>
+        void object::set(std::int16_t value)
+        {
+            clear();
+            _data = new(_buffer) scalar<std::int16_t>::data(value);
+        }
+
+        template <>
+        void object::set(std::int32_t value)
+        {
+            clear();
+            _data = new(_buffer) scalar<std::int32_t>::data(value);
+        }
+
+        template <>
+        void object::set(std::int64_t value)
+        {
+            clear();
+            _data = new(_buffer) scalar<std::int64_t>::data(value);
+        }
+
+        template <>
+        void object::set(std::uint8_t value)
+        {
+            clear();
+            _data = new(_buffer) scalar<std::uint8_t>::data(value);
+        }
+
+        template <>
+        void object::set(std::uint16_t value)
+        {
+            clear();
+            _data = new(_buffer) scalar<std::uint16_t>::data(value);
+        }
+
+        template <>
+        void object::set(std::uint32_t value)
+        {
+            clear();
+            _data = new(_buffer) scalar<std::uint32_t>::data(value);
+        }
+
+        template <>
+        void object::set(std::uint64_t value)
+        {
+            clear();
+            _data = new(_buffer) scalar<std::uint64_t>::data(value);
+        }
+
+        template <>
+        void object::set(float value)
+        {
+            clear();
+            _data = new(_buffer) scalar<float>::data(value);
+        }
+
+        template <>
+        void object::set(double value)
+        {
+            clear();
+            _data = new(_buffer) scalar<double>::data(value);
+        }
+
+        template <>
+        void object::set(std::nullptr_t)
+        {
+            clear();
+        }
     }
 }
 

@@ -2,6 +2,7 @@
 
 #include <qua/type/export>
 #include <cstdint>
+#include <cstddef>
 
 namespace qua
 {
