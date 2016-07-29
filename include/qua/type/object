@@ -1,0 +1,36 @@
+﻿#pragma once
+
+#include <qua/type/export>
+
+namespace qua
+{
+    namespace type
+    {
+        class QUA_TYPE_PUBLIC object
+        {
+        public:
+            object();
+            virtual ~object();
+
+            template <typename value_type>
+            explicit object(value_type value);
+
+            template <typename value_type>
+            void set(value_type value);
+
+            template <typename value_type>
+            value_type get() const;
+
+        protected:
+            static const size_t data_size = 16;
+
+        private:
+            class data;
+
+            data* m_data;
+            char m_buffer[data_size];
+        };
+    }
+}
+
+// Unicode signature: Владимир Керимов

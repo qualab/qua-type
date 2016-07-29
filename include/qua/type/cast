@@ -1,0 +1,17 @@
+﻿#pragma once
+
+#include <qua/type/export>
+
+namespace qua
+{
+    namespace type
+    {
+        template <typename result_type, typename value_type>
+        result_type cast(value_type)
+        {
+            static_assert(false, "No type cast found between these types.");
+        }
+    }
+}
+
+// Unicode signature: Владимир Керимов

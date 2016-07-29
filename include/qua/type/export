@@ -1,0 +1,22 @@
+﻿#pragma once
+
+#if defined(QUA_TYPE_STATIC) || !defined(WIN32)
+#   define QUA_TYPE_PUBLIC
+#elif defined(QUA_TYPE_EXPORTS)
+#   define QUA_TYPE_PUBLIC  __declspec(dllexport)
+#else
+#   define QUA_TYPE_PUBLIC  __declspec(dllimport)
+#endif
+
+namespace qua
+{
+    namespace type
+    {
+        class object;
+
+        template <typename result_type, typename value_type>
+        result_type cast(value_type value);
+    }
+}
+
+// Unicode signature: Владимир Керимов
