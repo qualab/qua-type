@@ -1,0 +1,83 @@
+﻿#pragma once
+
+#include <qua/type/export>
+
+namespace qua
+{
+    namespace type
+    {
+        template <typename value_type>
+        class QUA_TYPE_PUBLIC scalar
+        {
+        public:
+            scalar(value_type value);
+
+            scalar(const scalar& another);
+            scalar(scalar&& temporary);
+
+            class data;
+
+        private:
+            data* _data;
+        };
+
+        template <typename value_type>
+        class QUA_TYPE_PUBLIC scalar<value_type>::data : public object::data
+        {
+        public:
+            explicit data(value_type value);
+
+            value_type get() const;
+
+            virtual object::data* copy(void* to) const override;
+            virtual object::data* move(void* to) override;
+
+        private:
+            value_type _value;
+        };
+
+        template <typename value_type>
+        scalar<value_type>::data::data(value_type value)
+            : _value(value)
+        {
+        }
+
+        template <typename value_type>
+        value_type scalar<value_type>::data::get() const
+        {
+            return _value;
+        }
+
+        template <typename value_type>
+        object::data* scalar<value_type>::data::copy(void* to) const
+        {
+            return new(to) scalar<value_type>::data(get());
+        }
+
+        template <typename value_type>
+        object::data* scalar<value_type>::data::move(void* to)
+        {
+            return new(to) scalar<value_type>::data(std::move(_value));
+        }
+
+        template <typename value_type>
+        scalar<value_type>::scalar(value_type value)
+            : object(_data = new(buffer()) scalar<value_type>::data(value))
+        {
+        }
+
+        template <typename value_type>
+        scalar<value_type>::scalar(const scalar<value_type>& another)
+            : object(_data = new(buffer()) scalar<value_type>::data(*another._data))
+        {
+        }
+
+        template <typename value_type>
+        scalar<value_type>::scalar(scalar<value_type>&& temporary)
+            : object(_data = new(buffer()) scalar<value_type>::data(std::move(*temporary._data)))
+        {
+        }
+    }
+}
+
+// Unicode signature: Владимир Керимов

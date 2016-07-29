@@ -10,6 +10,9 @@
     <Filter Include="object">
       <UniqueIdentifier>{59af285f-00a8-4d41-91c3-9e55e4ed5b5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="scalar">
+      <UniqueIdentifier>{a7b43e27-d843-4b9a-9465-fde5f72aae6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\include\qua\type\cast">
@@ -20,6 +23,9 @@
     </None>
     <None Include="..\..\..\..\include\qua\type\object">
       <Filter>object</Filter>
+    </None>
+    <None Include="..\..\..\..\include\qua\type\scalar">
+      <Filter>scalar</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
