@@ -12,18 +12,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\include\qua\type\export">
-      <Filter>export</Filter>
-    </None>
-    <None Include="..\..\..\include\qua\type\cast">
+    <None Include="..\..\..\..\include\qua\type\cast">
       <Filter>cast</Filter>
     </None>
-    <None Include="..\..\..\include\qua\type\object">
+    <None Include="..\..\..\..\include\qua\type\export">
+      <Filter>export</Filter>
+    </None>
+    <None Include="..\..\..\..\include\qua\type\object">
       <Filter>object</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\sources\object\object.cpp">
+    <ClCompile Include="..\..\..\..\sources\object\object.cpp">
       <Filter>object</Filter>
     </ClCompile>
   </ItemGroup>
