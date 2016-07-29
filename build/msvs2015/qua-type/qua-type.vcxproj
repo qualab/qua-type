@@ -161,9 +161,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\sources\object\object.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\sources\object\object_data.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

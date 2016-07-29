@@ -43,7 +43,9 @@ namespace qua
         class QUA_TYPE_PUBLIC object::data
         {
         public:
-            virtual ~data() = 0;
+            virtual ~data() { }
+            virtual data* copy(char* to) const = 0;
+            virtual data* move(char* to) = 0;
         };
 
         template <typename value_type>

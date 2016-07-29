@@ -27,9 +27,4 @@
       <Filter>object</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\sources\object\object_data.hpp">
-      <Filter>object</Filter>
-    </ClInclude>
-  </ItemGroup>
 </Project>

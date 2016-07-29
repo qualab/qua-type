@@ -2,3 +2,5 @@
 *.opendb
 *.db
 *.user
+Debug
+Release
