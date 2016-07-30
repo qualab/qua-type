@@ -29,7 +29,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\sources\object\object.cpp">
+    <ClCompile Include="..\..\..\..\sources\object.cpp">
       <Filter>object</Filter>
     </ClCompile>
   </ItemGroup>

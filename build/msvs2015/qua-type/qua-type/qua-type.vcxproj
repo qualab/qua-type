@@ -25,7 +25,7 @@
     <None Include="..\..\..\..\include\qua\type\scalar" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\sources\object\object.cpp" />
+    <ClCompile Include="..\..\..\..\sources\object.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{47CA73B7-9AB1-43F1-9B19-75E7C49E30DF}</ProjectGuid>
