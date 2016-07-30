@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include <qua/type/export>
-#include <cstdint>
 #include <cstddef>
 
 namespace qua
@@ -14,34 +13,25 @@ namespace qua
             object();
             ~object();
 
+            void clear();
+
             object(const object& another);
             object(object&& temporary);
 
             object& operator = (const object& another);
             object& operator = (object&& temporary);
 
-            void clear();
+            template <typename value_type>
+            explicit object(value_type value);
 
             template <typename value_type>
-            object(value_type value);
+            object& operator = (value_type value);
 
             template <typename value_type>
-            operator value_type () const;
-
-            template <typename value_type>
-            void set(value_type value);
-
-            template <typename value_type>
-            value_type get() const;
+            value_type as() const;
 
             template <typename value_type>
             bool is() const;
-
-            template <typename value_type>
-            bool is(value_type value) const;
-
-            template <typename value_type>
-            value_type cast() const;
 
             class data;
 
@@ -68,39 +58,26 @@ namespace qua
         object::object(value_type value)
             : _data()
         {
-            set(value);
+            *this = value;
         }
 
         template <typename value_type>
-        object::operator value_type () const
+        object& object::operator = (value_type value)
         {
-            return get<value_type>();
+            static_assert(false, "Not implemented object assignment for the type specified.");
         }
 
-        template <> QUA_TYPE_PUBLIC bool object::get() const;
-        template <> QUA_TYPE_PUBLIC std::int8_t object::get() const;
-        template <> QUA_TYPE_PUBLIC std::int16_t object::get() const;
-        template <> QUA_TYPE_PUBLIC std::int32_t object::get() const;
-        template <> QUA_TYPE_PUBLIC std::int64_t object::get() const;
-        template <> QUA_TYPE_PUBLIC std::uint8_t object::get() const;
-        template <> QUA_TYPE_PUBLIC std::uint16_t object::get() const;
-        template <> QUA_TYPE_PUBLIC std::uint32_t object::get() const;
-        template <> QUA_TYPE_PUBLIC std::uint64_t object::get() const;
-        template <> QUA_TYPE_PUBLIC float object::get() const;
-        template <> QUA_TYPE_PUBLIC double object::get() const;
+        template <typename value_type>
+        value_type object::as() const
+        {
+            static_assert(false, "Not implemented object accessor for the type specified.");
+        }
 
-        template <> QUA_TYPE_PUBLIC void object::set(bool value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::int8_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::int16_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::int32_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::int64_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::uint8_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::uint16_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::uint32_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::uint64_t value);
-        template <> QUA_TYPE_PUBLIC void object::set(float value);
-        template <> QUA_TYPE_PUBLIC void object::set(double value);
-        template <> QUA_TYPE_PUBLIC void object::set(std::nullptr_t);
+        template <typename value_type>
+        bool object::is() const
+        {
+            static_assert(false, "Not implemented object check for the type specified.");
+        }
     }
 }
 
