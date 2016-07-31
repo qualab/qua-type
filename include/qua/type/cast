@@ -6,6 +6,16 @@ namespace qua
 {
     namespace type
     {
+        template <typename result_type, typename value_type, typename meta_type = void>
+        class QUA_TYPE_PUBLIC converter
+        {
+        public:
+            bool try_cast(result_type& result, const value_type&) const
+            {
+                assert(false, "No type convertor found for the types specified.");
+            }
+        };
+
         template <typename result_type, typename value_type>
         result_type cast(value_type)
         {

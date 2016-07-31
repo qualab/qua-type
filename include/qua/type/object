@@ -1,7 +1,6 @@
 ﻿#pragma once
 
-#include <qua/type/export>
-#include <cstddef>
+#include <qua/type/exception>
 
 namespace qua
 {
@@ -35,6 +34,8 @@ namespace qua
 
             class data;
 
+            class bad_data;
+
         protected:
             static const size_t data_size = 64;
 
@@ -52,6 +53,14 @@ namespace qua
             virtual ~data() { }
             virtual data* copy(void* to) const = 0;
             virtual data* move(void* to) = 0;
+        };
+
+        class QUA_TYPE_PUBLIC object::bad_data : public exception
+        {
+        public:
+            typedef exception base;
+
+            bad_data();
         };
 
         template <typename value_type>

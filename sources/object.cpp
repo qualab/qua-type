@@ -58,14 +58,18 @@ namespace qua
             : _data(derived)
         {
             if (static_cast<void*>(_data) != buffer())
-            {
-                // TODO: throw exception
-            }
+                throw bad_data();
         }
 
         void* object::buffer()
         {
             return static_cast<void*>(_buffer);
+        }
+
+        object::bad_data::bad_data()
+            : base("Bad data initialization. "
+                "Data must be derived class created by placement new in the internal buffer of this object.")
+        {
         }
     }
 }

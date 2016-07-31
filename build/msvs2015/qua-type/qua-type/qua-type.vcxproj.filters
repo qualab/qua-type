@@ -13,6 +13,9 @@
     <Filter Include="scalar">
       <UniqueIdentifier>{a7b43e27-d843-4b9a-9465-fde5f72aae6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="exception">
+      <UniqueIdentifier>{35090052-e4ff-4a4e-a123-9a1d7a7a2a68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\include\qua\type\cast">
@@ -26,6 +29,9 @@
     </None>
     <None Include="..\..\..\..\include\qua\type\scalar">
       <Filter>scalar</Filter>
+    </None>
+    <None Include="..\..\..\..\include\qua\type\exception">
+      <Filter>exception</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

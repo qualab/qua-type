@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\include\qua\type\cast" />
+    <None Include="..\..\..\..\include\qua\type\exception" />
     <None Include="..\..\..\..\include\qua\type\export" />
     <None Include="..\..\..\..\include\qua\type\object" />
     <None Include="..\..\..\..\include\qua\type\scalar" />
