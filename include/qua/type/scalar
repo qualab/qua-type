@@ -15,6 +15,8 @@ namespace qua
             scalar(const scalar& another);
             scalar(scalar&& temporary);
 
+            operator value_type () const;
+
             class data;
 
         private:
@@ -76,6 +78,12 @@ namespace qua
         scalar<value_type>::scalar(scalar<value_type>&& temporary)
             : object(_data = new(buffer()) scalar<value_type>::data(std::move(*temporary._data)))
         {
+        }
+
+        template <typename value_type>
+        scalar<value_type>::operator value_type () const
+        {
+            return _data->get();
         }
     }
 }

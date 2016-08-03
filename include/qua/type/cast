@@ -1,26 +1,47 @@
 ﻿#pragma once
 
-#include <qua/type/export>
+#include <qua/type/exception>
+#include <typeinfo>
+#include <utility>
 
 namespace qua
 {
     namespace type
     {
         template <typename result_type, typename value_type, typename meta_type = void>
-        class QUA_TYPE_PUBLIC converter
+        struct QUA_TYPE_PUBLIC converter
         {
-        public:
             bool try_cast(result_type& result, const value_type&) const
             {
                 assert(false, "No type convertor found for the types specified.");
             }
         };
 
-        template <typename result_type, typename value_type>
-        result_type cast(value_type)
+        class QUA_TYPE_PUBLIC bad_cast : public exception
         {
-            static_assert(false, "No type cast found between these types.");
+        public:
+            bad_cast(const std::string& result_type, const std::string& value_type);
+        };
+
+        template <typename result_type, typename value_type>
+        result_type cast(value_type value)
+        {
+            result_type result;
+            if (converter<result_type, value_type>::try_cast(result, value))
+                return std::move(result);
+            else
+                throw bad_cast(typeid(result).name, typeid(value).name);
         }
+
+        template <typename same_type>
+        struct QUA_TRACE_PUBLIC converter<same_type, same_type>
+        {
+            bool try_cast(same_type& result, const same_type& value)
+            {
+                result = value;
+                return true;
+            }
+        };
     }
 }
 

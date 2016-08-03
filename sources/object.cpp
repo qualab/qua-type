@@ -55,15 +55,11 @@ namespace qua
         }
 
         object::object(object::data* derived)
-            : _data(derived)
+            : _data()
         {
-            if (static_cast<void*>(_data) != buffer())
+            if (derived != buffer())
                 throw bad_data();
-        }
-
-        void* object::buffer()
-        {
-            return static_cast<void*>(_buffer);
+            _data = derived;
         }
 
         object::bad_data::bad_data()
